@@ -41,6 +41,11 @@ public abstract class GameCanvas extends Canvas {
 	protected int score = 0;
 	protected int lives = 3;
 
+	/**
+	 * Background color - defaults to WHITE if not explicitly set in subclass
+	 */
+	protected Color backgroundColor = Color.WHITE;
+	
 	/** 
 	 * Creates a new instance of MainWindow 
 	 */
@@ -110,7 +115,7 @@ public abstract class GameCanvas extends Canvas {
 			// Get hold of a graphics context for the accelerated
 			// surface and blank it out
 			g = (Graphics2D) strategy.getDrawGraphics();
-			g.setColor(Color.WHITE);
+			g.setColor(this.getBackgroundColor());
 			g.fillRect(0, 0, 800, 600);
 
 			// calculate positions of player and sprites
@@ -157,6 +162,23 @@ public abstract class GameCanvas extends Canvas {
 		strategy.show();
 	}
 
+	/**
+	 * 
+	 * @return
+	 */
+	protected Color getBackgroundColor(){
+		return this.backgroundColor;
+	}
+	
+	/**
+	 * 
+	 * @param color
+	 * @return
+	 */
+	protected void setBackgroundColor(Color color){
+		this.backgroundColor = color;
+	}
+	
 	/**
 	 * TODO:
 	 */
