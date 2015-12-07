@@ -19,11 +19,15 @@ import kh.gameengine.ui.GameCanvas;
 public abstract class GameFrame extends JFrame {
 
 	protected GameCanvas gameCanvas;
-
+	private int windowWidth;
+	private int windowHeight;
+	
 	/**
 	 * Creates a new instance of Engine
 	 */
-	public GameFrame() {
+	public GameFrame(int width, int height) {
+		this.windowWidth = width;
+		this.windowHeight = height;
 	}
 
 	/**
@@ -49,11 +53,11 @@ public abstract class GameFrame extends JFrame {
 			@Override
 			public void run() {
 				JPanel panel = (JPanel) getContentPane();
-				panel.setPreferredSize(new Dimension(550, 400));
+				panel.setPreferredSize(new Dimension(windowWidth, windowHeight));
 				panel.setLayout(null);
-				setBounds(0, 0, 550, 400);
+				setBounds(0, 0, windowWidth, windowHeight);
 
-				gameCanvas.setBounds(0, 0, 550, 400);
+				gameCanvas.setBounds(0, 0, windowWidth, windowHeight);
 				panel.add(gameCanvas);
 
 				pack();
